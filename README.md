@@ -1,57 +1,99 @@
-# Centralino Manager per Home Assistant
+# 🎛️ Centralino Home Assistant Manager
 
-**Autore e Sviluppo:** @ago1980
+**Versione:** 6.0.0 (Camera Support & Smart Volume)  
+**Autore:** @ago1980  
+**Licenza:** MIT
 
-## 🇮🇹 Descrizione del Progetto
+Un pannello di controllo web professionale per gestire le notifiche di Home Assistant con Intelligenza Artificiale (Google Gemini).
 
-**Centralino Manager** è uno strumento web avanzato progettato per generare automaticamente un **Custom Component per Home Assistant**. 
+![Dashboard Preview](https://via.placeholder.com/800x400.png?text=Centralino+HA+Dashboard)
 
-Il suo scopo è risolvere i problemi comuni delle notifiche domotiche (volumi sbagliati di notte, voci metalliche, musica che si interrompe) creando un sistema di "Centralino" unificato per tutta la casa.
+---
 
-### 🚀 Cosa fa il componente generato?
+## 🚀 Caratteristiche Principali
 
-Una volta configurato tramite questa interfaccia e installato su Home Assistant, il componente `centralino` offre le seguenti funzionalità esclusive:
+*   **🤖 AI Generativa:** Scrive automaticamente il codice Python per Home Assistant (Custom Component).
+*   **🔉 Smart Volume:** Regola il volume degli speaker in base all'ora (Mattina/Pomeriggio/Sera).
+*   **📸 Camera Snapshots:** Invia foto delle telecamere su Telegram e TV quando suona il campanello.
+*   **🤫 Do Not Disturb:** Blocca gli annunci audio di notte (ma lascia passare le urgenze).
+*   **🐛 Google Home Fix:** Risolve il problema dei Google Home che non parlano dopo un periodo di inattività.
 
-1.  **Volumi Intelligenti (Smart Volume)**
-    *   Definisci volumi diversi per **Mattina**, **Pomeriggio** e **Notte**.
-    *   Il sistema regola il volume *prima* di parlare e lo ripristina dopo, evitando urla di Alexa o Google Home nel cuore della notte.
+---
 
-2.  **Fix Completo per Google Home / Nest**
-    *   **Stop ai "Bip"**: Risolve il problema per cui Google Home emette solo un suono senza parlare.
-    *   **Lingua Italiana**: Forza l'accento italiano (spesso i TTS generici usano l'inglese per errore).
-    *   **Ripresa Musica (Music Resume)**: Se stavi ascoltando musica (Spotify, YouTube Music), il sistema fa l'annuncio e **riprende automaticamente la musica** da dove era rimasta (risolve il bug noto del protocollo Cast).
+## ⚡ Guida Rapida per PROXMOX (Copia & Incolla)
 
-3.  **Supporto Multi-Piattaforma**
-    *   Gestisce contemporaneamente **Alexa**, **Google Home/Cast**, **Sonos** e **Telegram**.
-    *   Per Telegram, invia messaggi formattati in HTML (grassetto per i titoli).
+Questa procedura installa il Centralino in **meno di 2 minuti** su un container Proxmox.
 
-4.  **Modalità Non Disturbare (DND)**
-    *   Imposta orari di silenzio (es. 22:00 - 07:00).
-    *   Supporta notifiche "Urgenti" che bypassano il silenzio in caso di emergenza.
+### 1. Crea il Container
+*   Crea un CT Ubuntu o Debian su Proxmox.
+*   Risorse minime: 1 Core, 512MB RAM.
+*   Copia l'indirizzo IP (es. `192.168.1.50`).
 
-5.  **Saluti Contestuali**
-    *   Aggiunge automaticamente "Buongiorno", "Buon pomeriggio" o "Buonasera" prima del messaggio in base all'orario.
+### 2. Esegui l'installazione
+Apri la **Console** del container, copia e incolla questo blocco di comandi:
 
-## 🛠️ Come si usa
+```bash
+# 1. Installa i requisiti base
+apt update && apt install -y git curl
 
-1.  Apri l'interfaccia web di questo progetto.
-2.  Inserisci i tuoi dispositivi (nome ed `entity_id` di Home Assistant).
-3.  Configura gli orari per le fasce giornaliere (Mattina, Pomeriggio, Sera).
-4.  Clicca su **"Generate HACS Component"**.
-5.  Copia i file generati nella cartella `/config/custom_components/centralino/` del tuo Home Assistant.
-6.  Riavvia Home Assistant.
+# 2. Scarica il progetto (Sostituisci con il TUO link GitHub se diverso)
+git clone https://github.com/TUO-UTENTE-GITHUB/centralino-ha-manager.git
+cd centralino-ha-manager
 
-## 📝 Esempio di utilizzo (Automazione)
+# 3. Avvia il setup automatico
+chmod +x setup.sh
+./setup.sh
+```
+
+> ⚠️ **Nota:** Durante il setup ti verrà chiesta la tua **Google Gemini API Key**.
+> È gratis: [Ottieni API Key qui](https://aistudio.google.com/app/apikey).
+
+### 3. Avvia il Centralino
+Ogni volta che vuoi avviare il pannello:
+
+```bash
+./start.sh
+```
+
+Apri il browser su: `http://192.168.1.XX:5173`
+
+---
+
+## 🔧 Come Configurare Home Assistant
+
+1.  Apri il Centralino dal browser.
+2.  Configura i tuoi dispositivi (Alexa, Google, Telegram).
+3.  Clicca su **"GENERA COMPONENTE"**.
+4.  Copia i file generati nella cartella `/config/custom_components/centralino/` del tuo Home Assistant.
+5.  Riavvia Home Assistant.
+
+### Esempio Automazione (YAML)
 
 ```yaml
-service: centralino.notify
-data:
-  target: ["Google Cucina", "Alexa Salotto"]
-  title: "Lavatrice"
-  message: "Il ciclo di lavaggio è terminato."
-  with_greeting: true
-  urgent: false
+alias: "Suona Campanello"
+trigger:
+  - platform: state
+    entity_id: binary_sensor.campanello
+    to: "on"
+action:
+  - service: notify.centralino
+    data:
+      message: "C'è qualcuno al cancello!"
+      target: ["media_player.sala", "media_player.cucina"]
+      data:
+        urgent: true
+        cameras: ["camera.esterna"] # Manda foto su Telegram e TV
 ```
 
 ---
-*Progetto sviluppato e mantenuto da **ago1980**.*
+
+## 🛠️ Aggiornamenti
+
+Per scaricare l'ultima versione:
+
+```bash
+cd centralino-ha-manager
+git pull
+npm install
+./start.sh
+```

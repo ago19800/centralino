@@ -1,3 +1,4 @@
+
 export type DeviceType = 'alexa' | 'google' | 'telegram' | 'sonos';
 
 export interface VolumeProfile {
@@ -9,24 +10,26 @@ export interface VolumeProfile {
 export interface Device {
   id: string;
   name: string;
-  entityId: string; // e.g., media_player.living_room
-  chatId?: string; // Optional chat_id for telegram
+  entityId: string;
+  chatId?: string;
+  cameraEntities?: string[];
+  snapDelay?: number;
   type: DeviceType;
-  volumes: VolumeProfile; // Telegram will ignore this, but keeps structure consistent
+  volumes: VolumeProfile;
   enabled: boolean;
 }
 
 export interface DNDSchedule {
   enabled: boolean;
-  startTime: string; // "22:00"
-  endTime: string; // "07:00"
+  startTime: string;
+  endTime: string;
 }
 
 export interface GlobalConfig {
   devices: Device[];
   dnd: DNDSchedule;
-  shutdownTime: string; // New: Auto shutdown time for speakers
-  restoreMusic: boolean; // New: Attempt to restore music after TTS
+  shutdownTime: string;
+  restoreMusic: boolean;
   timeDefinitions: {
     morningStart: string;
     afternoonStart: string;
