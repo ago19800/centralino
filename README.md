@@ -6,7 +6,6 @@
 
 Un pannello di controllo web professionale per gestire le notifiche di Home Assistant con Intelligenza Artificiale (Google Gemini).
 
-![Dashboard Preview](https://via.placeholder.com/800x400.png?text=Centralino+HA+Dashboard)
 
 ---
 
@@ -36,7 +35,7 @@ Apri la **Console** del container, copia e incolla questo blocco di comandi:
 # 1. Installa i requisiti base
 apt update && apt install -y git curl
 
-# 2. Scarica il progetto (Sostituisci con il TUO link GitHub se diverso)
+# 2. Scarica il progetto 
 git clone https://github.com/ago19800/centralino-ha-manager.git
 cd centralino-ha-manager
 
