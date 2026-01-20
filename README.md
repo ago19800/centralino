@@ -1,4 +1,4 @@
-# 🎛️ Centralino Home Assistant Manager
+# 🎛️ Centralino Home Assistant Manager#
 
 **Versione:** 6.0.0 (Camera Support & Smart Volume)  
 **Autore:** @ago1980  
