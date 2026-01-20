@@ -36,8 +36,8 @@ Apri la **Console** del container, copia e incolla questo blocco di comandi:
 apt update && apt install -y git curl
 
 # 2. Scarica il progetto 
-git clone https://github.com/ago19800/centralino-ha-manager.git
-cd centralino-ha-manager
+git clone https://github.com/ago19800/centralino.git
+cd centralino
 
 # 3. Avvia il setup automatico
 chmod +x setup.sh
