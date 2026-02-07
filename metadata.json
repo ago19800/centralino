@@ -1,5 +1,0 @@
-{
-  "name": "Centralino - Home Assistant Manager",
-  "description": "A dashboard to configure notification policies and generate a fully functional Home Assistant Custom Component (HACS compatible).",
-  "requestFramePermissions": []
-}
