@@ -6,7 +6,8 @@
 [![Home Assistant](https://img.shields.io/badge/Home%20Assistant-2024.1.0%2B-blue.svg)](https://www.home-assistant.io/)
 [![License](https://img.shields.io/github/license/ago1980/centralino)](LICENSE)
 
-
+# 📞 Centralino Manager
+![Logo](https://raw.githubusercontent.com/TUO_USERNAME/TUO_REPO/main/custom_components/centralino/icon.png)
 <div align="center">
 
 
