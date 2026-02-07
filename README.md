@@ -5,9 +5,13 @@
 [![Maintainer](https://img.shields.io/badge/Maintainer-ago1980-blue.svg)](https://github.com/ago1980)
 [![Home Assistant](https://img.shields.io/badge/Home%20Assistant-2024.1.0%2B-blue.svg)](https://www.home-assistant.io/)
 [![License](https://img.shields.io/github/license/ago1980/centralino)](LICENSE)
-
+<div align="center">
 # 📞 Centralino Manager
-![Logo](https://raw.githubusercontent.com/TUO_USERNAME/TUO_REPO/main/custom_components/centralino/icon.png)
+![Logo](https://github.com/ago19800/centralino/custom_components/centralino/icon.png)
+
+</div>
+
+
 <div align="center">
 
 
