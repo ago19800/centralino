@@ -6,6 +6,27 @@
 [![Home Assistant](https://img.shields.io/badge/Home%20Assistant-2024.1.0%2B-blue.svg)](https://www.home-assistant.io/)
 [![License](https://img.shields.io/github/license/ago1980/centralino)](LICENSE)
 
+
+<div align="center">
+
+
+
+
+
+## ☕ Supporta il Progetto
+
+**Se questo addon ti è utile, offrimi un caffè!**
+
+[![PayPal](https://img.shields.io/badge/PayPal-Dona%20Ora-00457C?logo=paypal&style=for-the-badge)](https://paypal.me/ago19800)
+
+**[paypal.me/ago19800](https://paypal.me/ago19800)**
+
+*Ogni donazione mi aiuta a continuare a sviluppare e migliorare questo custom!* 🙏
+
+</div>
+
+
+
 **Centralino Manager** è un'integrazione custom per Home Assistant che centralizza e rende intelligenti le notifiche della tua smart home. Gestisce automaticamente speaker (Alexa, Google Home) e Telegram, occupandosi di volumi orari, messaggi vocali, foto e video dalle telecamere.
 
 ---
