@@ -58,7 +58,7 @@ Spegnimento automatico di tutti i media player a un orario prestabilito (es. 01:
 
 ### Metodo 1: Tramite HACS (Consigliato)
 
-[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=ago1980&repository=centralino&category=integration)
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=ago19800&repository=centralino&category=integration)
 
 **Oppure manualmente:**
 
@@ -67,7 +67,7 @@ Spegnimento automatico di tutti i media player a un orario prestabilito (es. 01:
 3. Clicca sui **tre puntini** (⋮) in alto a destra
 4. Seleziona **Repository personalizzati**
 5. Inserisci:
-   - **URL**: `https://github.com/ago1980/centralino`
+   - **URL**: `https://github.com/ago19800/centralino`
    - **Categoria**: `Integration`
 6. Clicca **Aggiungi**
 7. Cerca "**Centralino Manager**" e clicca **Scarica**
@@ -75,7 +75,7 @@ Spegnimento automatico di tutti i media player a un orario prestabilito (es. 01:
 
 ### Metodo 2: Installazione Manuale
 
-1. Scarica l'ultima release da [GitHub Releases](https://github.com/ago1980/centralino/releases)
+1. Scarica l'ultima release da [GitHub Releases](https://github.com/ago19800/centralino/releases)
 2. Estrai i file
 3. Copia la cartella `centralino` in `/config/custom_components/`
 4. La struttura finale deve essere:
@@ -503,11 +503,11 @@ Se trovi utile questa integrazione:
 
 ## 📞 Supporto
 
-- **Issues**: [GitHub Issues](https://github.com/ago1980/centralino/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/ago1980/centralino/discussions)
+- **Issues**: [GitHub Issues](https://github.com/ago19800/centralino/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/ago19800/centralino/discussions)
 - **Community**: [Forum Home Assistant Italia](https://forum.hassiohelp.eu/)
 
 ---
 
-**Sviluppato da** [@ago1980](https://github.com/ago1980)  
+**Sviluppato da** [@ago1980](https://github.com/ago19800)  
 **Versione** 2.4.0
