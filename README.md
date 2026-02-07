@@ -1,7 +1,7 @@
-<div align="center">
+
 # 📞 Centralino Manager for Home Assistant
 
-
+<div align="center">
 ![Logo](https://raw.githubusercontent.com/ago19800/centralino/main/custom_components/centralino/icon.png)
 
 
