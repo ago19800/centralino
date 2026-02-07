@@ -1,5 +1,9 @@
 # 📞 Centralino Manager for Home Assistant
 
+# 📞 Centralino Manager
+![Logo](https://raw.githubusercontent.com/ago19800/centralino/main/custom_components/centralino/icon.png)
+
+
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/integration)
 [![GitHub Release](https://img.shields.io/github/v/release/ago1980/centralino)](https://github.com/ago1980/centralino/releases)
 [![Maintainer](https://img.shields.io/badge/Maintainer-ago1980-blue.svg)](https://github.com/ago1980)
