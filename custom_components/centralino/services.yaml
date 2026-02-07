@@ -1,0 +1,65 @@
+notify:
+  name: Invia Notifica Centralino
+  description: Invia messaggi audio o contenuti multimediali (Foto/Video) su Telegram e Speaker.
+  fields:
+    title:
+      description: Titolo della notifica (opzionale).
+      selector:
+        text:
+    message:
+      description: Il testo del messaggio da inviare o pronunciare.
+      required: true
+      selector:
+        text:
+    target:
+      description: Inserisci il 'name' o l' 'entityId' del dispositivo (es. soggiorno, alexa_cucina).
+      required: true
+      selector:
+        text:
+          multiple: true
+    media_type:
+      description: "Scegli cosa allegare al messaggio Telegram."
+      default: "none"
+      selector:
+        select:
+          options:
+            - label: "Solo Testo"
+              value: "none"
+            - label: "Snapshot (Foto)"
+              value: "snapshot"
+            - label: "Registrazione (Video 5s)"
+              value: "video"
+    cameras:
+      description: "Seleziona le telecamere (necessarie per Foto o Video)."
+      selector:
+        entity:
+          domain: camera
+          multiple: true
+    volume_level:
+      description: "Livello volume per questa notifica (0-100). Se vuoto, usa il config."
+      selector:
+        number:
+          min: 0
+          max: 100
+          unit_of_measurement: "%"
+          mode: slider
+    volume_urgent:
+      description: "Livello volume se la notifica è URGENTE (0-100)."
+      default: 80
+      selector:
+        number:
+          min: 0
+          max: 100
+          unit_of_measurement: "%"
+          mode: slider
+    with_greeting:
+      description: Aggiunge 'Buongiorno/Buon pomeriggio/Buonasera'.
+      default: false
+      selector:
+        boolean: {}
+    urgent:
+      description: Ignora il DND (Non Disturbare) e usa il volume urgente.
+      default: false
+      selector:
+         boolean: {}
+
