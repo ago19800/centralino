@@ -3,14 +3,14 @@
 
 <div align="center">
 ![Logo](https://raw.githubusercontent.com/ago19800/centralino/main/custom_components/centralino/icon.png)
-
+</div>
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/integration)
 [![GitHub Release](https://img.shields.io/github/v/release/ago1980/centralino)](https://github.com/ago1980/centralino/releases)
 [![Maintainer](https://img.shields.io/badge/Maintainer-ago1980-blue.svg)](https://github.com/ago1980)
 [![Home Assistant](https://img.shields.io/badge/Home%20Assistant-2024.1.0%2B-blue.svg)](https://www.home-assistant.io/)
 [![License](https://img.shields.io/github/license/ago1980/centralino)](LICENSE)
-</div>
+
 
 
 <div align="center">
