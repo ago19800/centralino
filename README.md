@@ -518,7 +518,7 @@ Se trovi utile questa integrazione:
 - ⭐ Lascia una stella su GitHub
 - 🐛 Segnala bug o suggerisci miglioramenti
 - 📢 Condividi con la community Home Assistant
-- ☕ [Offrimi un caffè](https://www.buymeacoffee.com/ago1980) (opzionale)
+- ☕ [Offrimi un caffè](https://paypal.me/ago19800) 
 
 ---
 
