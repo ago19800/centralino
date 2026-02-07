@@ -7,7 +7,7 @@
 [![License](https://img.shields.io/github/license/ago1980/centralino)](LICENSE)
 <div align="center">
 # 📞 Centralino Manager
-![Logo](https://github.com/ago19800/centralino/custom_components/centralino/icon.png)
+![Logo](https://github.com/ago19800/centralino/blob/main/custom_components/centralino/icon.png)
 
 </div>
 
