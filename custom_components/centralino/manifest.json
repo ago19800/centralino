@@ -2,9 +2,10 @@
   "domain": "centralino",
   "name": "Centralino Manager",
   "version": "2.4.0",
-  "documentation": "https://github.com/ago1980/centralino",
-  "codeowners": ["@ago1980"],
+  "documentation": "https://github.com/ago19800/centralino",
+  "codeowners": ["@ago19800"],
   "requirements": [],
   "iot_class": "local_push"
   
+
 }
