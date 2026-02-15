@@ -6,7 +6,12 @@
 [![Home Assistant](https://img.shields.io/badge/Home%20Assistant-2024.1.0%2B-blue.svg)](https://www.home-assistant.io/)
 
 
+<p align="center">
+  <img src="images/1000018249.jpg" width="260" alt="Foto 1">
+  <img src="images/1000018251.jpg" width="260" alt="Foto 2">
+  <img src="images/1000018253.jpg" width="260" alt="Foto 3">
 
+</p>
 
 
 <div align="center">
