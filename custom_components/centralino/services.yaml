@@ -1,0 +1,111 @@
+notify:
+  name: "Send Notification / Invia Notifica"
+  description: >
+    [EN] Send audio messages, photos or videos to speakers and Telegram.
+    [IT] Invia messaggi audio, foto o video su speaker e Telegram.
+  fields:
+    title:
+      name: "Title / Titolo"
+      description: >
+        [EN] Optional notification title (shown in bold on Telegram).
+        [IT] Titolo opzionale della notifica (in grassetto su Telegram).
+      required: false
+      selector:
+        text:
+
+    message:
+      name: "Message / Messaggio"
+      description: >
+        [EN] The text to send or speak aloud on speakers.
+        [IT] Il testo da inviare o pronunciare sugli speaker.
+      required: true
+      selector:
+        text:
+          multiline: true
+
+    target:
+      name: "Target Device(s) / Dispositivo/i Target"
+      description: >
+        [EN] Enter the 'name' or 'entityId' of the device(s) defined in configuration.yaml
+        (e.g. living_room, alexa_kitchen, telegram_me). Multiple values allowed.
+        [IT] Inserisci il 'name' o 'entityId' del dispositivo configurato in configuration.yaml
+        (es. soggiorno, alexa_cucina, telegram_io). Puoi inserirne più di uno.
+      required: true
+      selector:
+        text:
+          multiple: true
+
+    media_type:
+      name: "Media Type / Tipo Media"
+      description: >
+        [EN] Choose what to attach to the Telegram message.
+        [IT] Scegli cosa allegare al messaggio Telegram.
+      required: false
+      default: "none"
+      selector:
+        select:
+          options:
+            - label: "Text only / Solo Testo"
+              value: "none"
+            - label: "Photo Snapshot / Snapshot (Foto)"
+              value: "snapshot"
+            - label: "Video (5s) / Registrazione (Video 5s)"
+              value: "video"
+
+    cameras:
+      name: "Cameras / Telecamere"
+      description: >
+        [EN] Select the cameras to capture photo/video from (required for snapshot/video).
+        [IT] Seleziona le telecamere da cui catturare foto/video (necessarie per snapshot/video).
+      required: false
+      selector:
+        entity:
+          domain: camera
+          multiple: true
+
+    volume_level:
+      name: "Volume Level / Livello Volume"
+      description: >
+        [EN] Force speaker volume for this notification (0-100). If empty, uses time-based config.
+        [IT] Forza il volume dello speaker per questa notifica (0-100). Se vuoto, usa la configurazione oraria.
+      required: false
+      selector:
+        number:
+          min: 0
+          max: 100
+          unit_of_measurement: "%"
+          mode: slider
+
+    volume_urgent:
+      name: "Urgent Volume / Volume Urgente"
+      description: >
+        [EN] Volume level used when 'urgent' is enabled (0-100). Default: 80.
+        [IT] Volume usato quando la notifica è URGENTE (0-100). Default: 80.
+      required: false
+      default: 80
+      selector:
+        number:
+          min: 0
+          max: 100
+          unit_of_measurement: "%"
+          mode: slider
+
+    with_greeting:
+      name: "Add Greeting / Aggiungi Saluto"
+      description: >
+        [EN] Automatically prepends 'Good morning', 'Good afternoon' or 'Good evening' based on the time.
+        [IT] Aggiunge automaticamente 'Buongiorno', 'Buon pomeriggio' o 'Buonasera' in base all'orario.
+      required: false
+      default: false
+      selector:
+        boolean: {}
+
+    urgent:
+      name: "Urgent / Urgente"
+      description: >
+        [EN] If enabled, bypasses the Do Not Disturb (DND) schedule and uses urgent volume.
+        [IT] Se attivo, ignora il Non Disturbare (DND) e usa il volume urgente.
+      required: false
+      default: false
+      selector:
+        boolean: {}
