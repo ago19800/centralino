@@ -40,7 +40,7 @@
 ## 🇬🇧 English
 
 **Centralino Manager** is a custom Home Assistant integration that centralizes and automates smart home notifications. It manages speakers (Alexa, Google Home) and Telegram simultaneously, handling time-based volumes, voice messages, photos and videos from cameras.
-
+**NEW!** Centralino now supports push notifications on the Home Assistant mobile app (Android/iOS)!
 ### ✨ Features
 
 | Feature | Description |
@@ -53,7 +53,7 @@
 | 🎵 **Music restore** | Pauses music, makes announcement, then resumes playback |
 | ⏰ **Auto shutdown** | Turns off all media players at a scheduled time |
 | 💬 **Auto greeting** | Prepends "Good morning/afternoon/evening" based on the time |
-
+| 📲 **Persistent notifications** on your phone/tablet
 ### 🚀 Installation
 
 #### Method 1: HACS (Recommended)
@@ -118,6 +118,20 @@ centralino:
       type: "telegram"
       enabled: true
 
+     # Android Phone (NEW)
+    - id: "4"
+      name: "mobile_john"
+      type: "mobile"
+      mobileNotifyService: "mobile_app_samsung_s21"  # ← Your device name
+      enabled: true
+
+    # iPhone (NEW)
+    - id: "5"
+      name: "mobile_jane"
+      type: "mobile"
+      mobileNotifyService: "mobile_app_iphone_of_jane"
+      enabled: true
+
   timeDefinitions:
     morningStart: "06:00"
     afternoonStart: "12:00"
@@ -148,14 +162,41 @@ centralino:
 | `with_greeting` | boolean | ❌ | Add time-based greeting |
 | `urgent` | boolean | ❌ | Bypass DND, use urgent volume |
 
-### 📝 Examples
 
+#### New Service Parameters
+
+| Parameter | Description | Example |
+|-----------|-------------|---------|
+| `mobile_action` | URL/path to open when tapping notification | `/lovelace/cameras` |
+| `mobile_tag` | Tag to group/replace notifications | `daily_weather` |
+### 📝 Examples
+**How to find your mobile service name:**
+
+1. Open the **Home Assistant app** on your phone
+2. Go to **Settings** (⚙️) → **Companion App**
+3. Note the **"Device name"** (e.g., "Samsung S21")
+4. The service will be: `mobile_app_<device_name_in_lowercase>`
+
+Or find it in **Developer Tools** → **Services** → search for `notify.mobile_app_`
+
+#### Usage Examples
+
+**Simple notification:**
+```yaml
+service: centralino.notify
+data:
+  title: "Washing Machine"
+  message: "Cycle completed"
+  target:
+    - mobile_john
+```
 **Simple notification:**
 ```yaml
 service: centralino.notify
 data:
   message: "The washing machine has finished"
   target: living_room
+
 ```
 
 **Multi-device with greeting:**
@@ -169,6 +210,8 @@ data:
     - living_room
     - kitchen
     - telegram_me
+    - mobile_john
+    - mobile_jane
 ```
 
 **Security alarm with photo:**
@@ -185,6 +228,8 @@ data:
   target:
     - telegram_me
     - living_room
+    - mobile_john
+    - mobile_jane
 ```
 
 **Alarm with video (5 seconds):**
@@ -260,6 +305,7 @@ logger:
 ## 🇮🇹 Italiano
 
 **Centralino Manager** è un'integrazione custom per Home Assistant che centralizza e rende intelligenti le notifiche della tua smart home. Gestisce automaticamente speaker (Alexa, Google Home) e Telegram, occupandosi di volumi orari, messaggi vocali, foto e video dalle telecamere.
+**NOVITÀ!** Centralino ora supporta le notifiche push sull'app mobile di Home Assistant (Android/iOS)!
 
 ### ✨ Funzionalità
 
@@ -273,7 +319,7 @@ logger:
 | 🎵 **Ripristino musica** | Mette in pausa la musica, fa l'annuncio, poi riprende |
 | ⏰ **Spegnimento automatico** | Spegne tutti i media player all'orario configurato |
 | 💬 **Saluto automatico** | Aggiunge "Buongiorno/Buon pomeriggio/Buonasera" in base all'ora |
-
+|  📲 **Notifiche persistenti** sul tuo telefono/tablet
 ### 🚀 Installazione
 
 #### Metodo 1: HACS (Consigliato)
@@ -392,6 +438,22 @@ centralino:
       type: "telegram"
       enabled: true
 
+   # Telefono Android (NUOVO)
+    - id: "4"
+      name: "mobile_mario"
+      type: "mobile"
+      mobileNotifyService: "mobile_app_samsung_s21"  # ← Nome del tuo dispositivo
+      enabled: true
+
+    # iPhone (NUOVO)
+    - id: "5"
+      name: "mobile_sara"
+      type: "mobile"
+      mobileNotifyService: "mobile_app_iphone_di_sara"
+      enabled: true
+
+
+
   timeDefinitions:
     morningStart: "07:00"
     afternoonStart: "13:00"
@@ -405,7 +467,14 @@ centralino:
   shutdownTime: "02:00"
   restoreMusic: true
 ```
+**Come trovare il nome del servizio mobile:**
 
+1. Apri l'**app Home Assistant** sul telefono
+2. Vai su **Impostazioni** (⚙️) → **Companion App**
+3. Annota il **"Nome dispositivo"** (es. "Samsung S21")
+4. Il servizio sarà: `mobile_app_<nome_dispositivo_minuscolo>`
+
+Oppure trovalo in **Strumenti per sviluppatori** → **Servizi** → cerca `notify.mobile_app_`
 ### 🛠️ Parametri del Servizio
 
 | Parametro | Tipo | Obbligatorio | Descrizione |
@@ -419,6 +488,18 @@ centralino:
 | `volume_urgent` | number | ❌ | Volume urgente (default: 80) |
 | `with_greeting` | boolean | ❌ | Aggiunge saluto automatico |
 | `urgent` | boolean | ❌ | Ignora DND, usa volume urgente |
+| `mobile_action` | string | ❌ | **NUOVO** - URL da aprire al tap (solo mobile) |
+| `mobile_tag` | string | ❌ | **NUOVO** - Tag per sostituire notifiche (solo mobile) |
+Un solo comando → tutti i tuoi dispositivi! 🎉
+
+#### Nuovi Parametri del Servizio
+
+| Parametro | Descrizione | Esempio |
+|-----------|-------------|---------|
+| `mobile_action` | URL/percorso da aprire toccando la notifica | `/lovelace/telecamere` |
+| `mobile_tag` | Tag per raggruppare/sostituire notifiche | `meteo_giornaliero` |
+
+
 
 ### 📝 Esempi Pratici
 
@@ -495,7 +576,47 @@ automation:
             - telegram_famiglia
             - camera
 ```
+**Notifica con foto della telecamera:**
+```yaml
+service: centralino.notify
+data:
+  title: "Movimento Rilevato"
+  message: "Qualcuno al cancello"
+  media_type: "snapshot"
+  cameras:
+    - camera.ingresso
+  target:
+    - mobile_mario
+    - mobile_sara
+```
 
+**Allarme sicurezza urgente (priorità alta):**
+```yaml
+service: centralino.notify
+data:
+  title: "🚨 ALLARME SICUREZZA"
+  message: "Movimento rilevato in giardino!"
+  media_type: "snapshot"
+  cameras:
+    - camera.giardino
+  urgent: true  # ← Priorità alta con suono
+  mobile_action: "/lovelace/sicurezza"  # ← Apre pagina sicurezza al tap
+  target:
+    - mobile_mario
+    - mobile_sara
+```
+
+**Notifica multi-target (mobile + Telegram + Alexa):**
+```yaml
+service: centralino.notify
+data:
+  title: "Porta Aperta"
+  message: "La porta d'ingresso è stata aperta"
+  target:
+    - mobile_mario      # Telefono
+    - telegram_famiglia # Telegram
+    - soggiorno         # Speaker Alexa
+```
 ### 📋 Requisiti
 
 - **Home Assistant** 2024.1.0+
