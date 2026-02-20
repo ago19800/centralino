@@ -1,7 +1,7 @@
 {
   "domain": "centralino",
   "name": "Centralino Manager",
-  "version": "2.4.1",
+  "version": "2.4.2",
   "documentation": "https://github.com/ago19800/centralino",
   "codeowners": ["@ago19800"],
   "requirements": [],
@@ -9,4 +9,5 @@
   
 
 }
+
 
