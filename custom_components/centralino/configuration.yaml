@@ -1,0 +1,100 @@
+# Esempio Configurazione Centralino Manager con App Mobile
+# Configuration Example with Mobile App Support
+
+centralino:
+  devices:
+    # ========== SPEAKER ALEXA ==========
+    - id: "1"
+      name: "soggiorno"
+      entityId: "media_player.alexa_soggiorno"
+      type: "alexa"
+      volumes:
+        morning: 40
+        afternoon: 50
+        night: 20
+      enabled: true
+
+    # ========== SPEAKER GOOGLE HOME ==========
+    - id: "2"
+      name: "cucina"
+      entityId: "media_player.google_cucina"
+      type: "google"
+      volumes:
+        morning: 30
+        afternoon: 45
+        night: 15
+      enabled: true
+
+    # ========== TELEGRAM ==========
+    - id: "3"
+      name: "telegram_io"
+      chatId: "123456789"
+      type: "telegram"
+      enabled: true
+
+    # ========== MOBILE APP - ANDROID (NUOVO) ==========
+    - id: "4"
+      name: "mobile_mario"
+      type: "mobile"
+      # IMPORTANTE: Questo è il nome del servizio notify creato dall'app
+      # Lo trovi in: Configurazione > Companion App > Nome dispositivo
+      # Formato: mobile_app_<nome_dispositivo>
+      mobileNotifyService: "mobile_app_samsung_s21"
+      enabled: true
+
+    # ========== MOBILE APP - iOS (NUOVO) ==========
+    - id: "5"
+      name: "mobile_sara"
+      type: "mobile"
+      mobileNotifyService: "mobile_app_iphone_di_sara"
+      enabled: true
+
+    # ========== MOBILE APP - Tablet (NUOVO) ==========
+    - id: "6"
+      name: "tablet_cucina"
+      type: "mobile"
+      mobileNotifyService: "mobile_app_ipad_cucina"
+      enabled: true
+
+  # Definizione fasce orarie
+  timeDefinitions:
+    morningStart: "06:00"
+    afternoonStart: "12:00"
+    nightStart: "20:00"
+
+  # Non Disturbare (DND)
+  dnd:
+    enabled: true
+    startTime: "22:30"
+    endTime: "07:30"
+
+  # Spegnimento automatico speaker
+  shutdownTime: "01:00"
+  
+  # Ripristina musica dopo annunci
+  restoreMusic: true
+
+
+# ========================================================================
+# COME TROVARE IL NOME DEL SERVIZIO MOBILE
+# ========================================================================
+#
+# 1. Apri l'app Home Assistant sul telefono
+# 2. Vai su Impostazioni (⚙️) > Companion App
+# 3. Guarda il "Nome dispositivo" (es. "Samsung S21", "iPhone di Mario")
+# 4. Il servizio sarà: mobile_app_<nome_in_minuscolo_con_underscore>
+#
+# Esempi:
+#   - Nome dispositivo: "Samsung S21"     → mobile_app_samsung_s21
+#   - Nome dispositivo: "iPhone di Mario" → mobile_app_iphone_di_mario
+#   - Nome dispositivo: "iPad Cucina"     → mobile_app_ipad_cucina
+#
+# OPPURE vai in:
+# Strumenti per sviluppatori > Servizi > cerca "notify." 
+# Vedrai tutti i servizi disponibili tipo:
+#   - notify.mobile_app_samsung_s21
+#   - notify.mobile_app_iphone_di_mario
+#
+# Usa la parte DOPO "notify." come valore di mobileNotifyService
+#
+# ========================================================================
